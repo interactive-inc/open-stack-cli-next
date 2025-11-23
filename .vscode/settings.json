@@ -1,0 +1,40 @@
+{
+  "[typescript][typescriptreact][json][css]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.biome": "explicit"
+    },
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "*.json": "json"
+  },
+  "files.exclude": {
+    ".nitro": true,
+    ".output": true,
+    ".tanstack": true,
+    ".wrangler": true,
+    "node_modules": true,
+    "tsconfig.tsbuildinfo": true
+  },
+  "files.readonlyInclude": {
+    "**/route-tree.gen.ts": true,
+    "components/ui/*": true,
+    "hooks/use-mobile.ts": true,
+    "lib/utils.ts": true
+  },
+  "files.watcherExclude": {
+    "**/route-tree.gen.ts": true
+  },
+  "search.exclude": {
+    "**/route-tree.gen.ts": true,
+    "bun.lock": true
+  },
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "react-day-picker",
+    "radix-ui"
+  ],
+  "typescript.preferences.importModuleSpecifier": "non-relative"
+}

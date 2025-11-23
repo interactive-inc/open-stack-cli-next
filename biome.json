@@ -1,0 +1,36 @@
+{
+  "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    },
+    "linter": {
+      "enabled": false
+    }
+  },
+  "files": {
+    "includes": [
+      "**",
+      "!.next",
+      "!**/components/ui/*",
+      "!**/hooks/use-mobile.ts",
+      "!**/route-tree.gen.ts",
+      "!bin",
+      "!bun.lock",
+      "!tsconfig.tsbuildinfo"
+    ]
+  },
+  "formatter": {
+    "indentStyle": "space"
+  },
+  "javascript": {
+    "formatter": {
+      "semicolons": "asNeeded"
+    }
+  },
+  "linter": {
+    "rules": {
+      "recommended": true
+    }
+  }
+}
