@@ -1,9 +1,23 @@
 #!/usr/bin/env node
 
 import { createServer } from "node:http"
+import { dirname, join } from "node:path"
+import { fileURLToPath } from "node:url"
 import { parseArgs } from "node:util"
 import next from "next"
 import packageJson from "./package.json"
+
+const __filename = fileURLToPath(import.meta.url)
+
+const __dirname = dirname(__filename)
+
+const isBuilt = __filename.includes("/build/")
+
+/**
+ * ビルド後（build/cli.js）の場合のみ親ディレクトリを指定
+ * 開発時（cli.ts）は process.cwd() が使われる
+ */
+const _dir = isBuilt ? join(__dirname, "..") : undefined
 
 const help = `Usage:
   hello [options]
@@ -57,6 +71,7 @@ const app = next({
   dev: false,
   hostname,
   port,
+  ...(_dir && { dir: _dir }),
 })
 
 const handle = app.getRequestHandler()
