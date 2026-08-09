@@ -55,17 +55,12 @@ if (args.values.version) {
   process.exit(0)
 }
 
-const port =
-  typeof args.values.port === "string"
-    ? Number.parseInt(args.values.port, 10)
-    : 3000
+const port = typeof args.values.port === "string" ? Number.parseInt(args.values.port, 10) : 3000
 
 const hostname = "localhost"
 
 process.env.CLI_MESSAGE =
-  typeof args.values.message === "string"
-    ? args.values.message
-    : "Hello, World!"
+  typeof args.values.message === "string" ? args.values.message : "Hello, World!"
 
 const app = next({
   dev: false,

@@ -15,35 +15,36 @@
 ## インストール
 
 ```bash
-bun install
+vp install
 ```
 
 ## 開発
 
 ```bash
-bun run dev
+vp run dev
 ```
 
 ## ビルド
 
 ```bash
-bun run build
+vp run build
 ```
 
-以下がビルドされます：
+以下がビルドされます。
+
 1. Next.jsアプリ → `.next/`
 2. CLI → `bin/hello.js`
 
 ## ローカル開発用のコマンドインストール
 
-ビルド後、`bun link`でローカルに`hello`コマンドをインストールできます：
+ビルド後、`vp link` でローカルに `hello` コマンドをインストールできます。
 
 ```bash
 # ビルド
-bun run build
+vp run build
 
 # グローバルにリンク
-bun link
+vp link
 
 # これで hello コマンドが使えます
 hello --help
@@ -53,39 +54,48 @@ hello -p 8080 -m "Test"
 アンインストール：
 
 ```bash
-bun unlink
+vp unlink
 ```
 
 **仕組み：**
-- `bun link`は、パッケージをグローバルな場所にシンボリックリンクします
+
+- `vp link` は、パッケージをグローバルな場所にシンボリックリンクします
 - `package.json`の`bin`フィールドに基づいて`hello`コマンドが作成されます
 - ソースコードを変更してビルドすると、自動的に反映されます（リンクなので）
 
-開発中は、変更 → ビルド → すぐにテストできて便利です。
+## 検証
+
+```bash
+vp lint
+vp fmt
+vp test
+vp run check
+```
 
 ## CLIの実行
 
 ```bash
 # ヘルプを表示
-bun cli.ts --help
+vp run start -- --help
 
 # デフォルト設定（ポート3000、"Hello, World!"）
-bun cli.ts
+vp run start
 
 # カスタムポート
-bun cli.ts -p 8080
+vp run start -- -p 8080
 
 # カスタムメッセージ
-bun cli.ts -m "Welcome!"
+vp run start -- -m "Welcome!"
 
 # カスタムポートとメッセージ
-bun cli.ts -p 8080 -m "Custom message"
+vp run start -- -p 8080 -m "Custom message"
 
 # バージョン表示
-bun cli.ts --version
+vp run start -- --version
 ```
 
 **オプション：**
+
 - `-p, --port <port>` - ポート番号（デフォルト：3000）
 - `-m, --message <text>` - 表示するメッセージ（デフォルト："Hello, World!"）
 - `-h, --help` - ヘルプを表示
@@ -94,6 +104,7 @@ bun cli.ts --version
 ## 配布
 
 package.jsonの`files`フィールドには以下のみが含まれます：
+
 - `bin/` - ビルド済みCLI
 - `.next/` - ビルド済みNext.jsアプリ（すべてのコードがバンドル済み）
 

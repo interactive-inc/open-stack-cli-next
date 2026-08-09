@@ -1,7 +1,6 @@
 # Build both Next.js app and CLI
 build:
-	bun next build
-	bun tsup
+	vp run build
 
 # Clean build artifacts
 clean:
@@ -14,6 +13,7 @@ update-packages:
 	bunx --bun shadcn@latest add -a -o -y
 	bunx --bun shadcn@latest migrate radix -y
 	bunx npm-check-updates -u
-	bun i
+	vp install
 	rm components/ui/chart.tsx
-	bun biome check . --fix --unsafe
+	vp fmt --write
+	vp lint --fix
